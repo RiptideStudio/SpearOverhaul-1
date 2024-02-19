@@ -1,0 +1,16 @@
+using Terraria;
+using Terraria.ModLoader;
+
+namespace SpearOverhaul.Buffs;
+
+public class GodArmorDebuff : ModBuff
+{
+	public override void SetStaticDefaults()
+	{
+		// base.DisplayName.SetDefault("Titan's Blessing Cooldown");
+		// base.Description.SetDefault("Titan's Blessing is on cooldown");
+		Main.buffNoSave[base.Type] = true;
+		Main.buffNoTimeDisplay[base.Type] = false;
+		Main.debuff[base.Type] = true;
+	}
+}

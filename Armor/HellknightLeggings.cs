@@ -1,0 +1,41 @@
+using System;
+using SpearOverhaul.GlobalStuff;
+using Terraria;
+using Terraria.ModLoader;
+
+namespace SpearOverhaul.Armor;
+
+[AutoloadEquip(new EquipType[] { EquipType.Legs })]
+public class HellknightLeggings : ModItem
+{
+	public override void SetStaticDefaults()
+	{
+		// base.DisplayName.SetDefault("Hellknight Greaves");
+		// base.Tooltip.SetDefault("5% increased melee damage\n12% increased movement speed");
+	}
+
+	public override void SetDefaults()
+	{
+		base.Item.width = 18;
+		base.Item.height = 18;
+		base.Item.value = 32500;
+		base.Item.rare = 3;
+		base.Item.defense = 8;
+	}
+
+	public override void UpdateEquip(Player player)
+	{
+		player.moveSpeed += 0.12f;
+		player.GetDamage(DamageClass.Melee) += 0.05f;
+		player.GetModPlayer<GlobalPlayer>().spearDamage += (int)Math.Ceiling((double)((float)player.GetModPlayer<GlobalPlayer>().spearDamage * 0.03f));
+	}
+
+	public override void AddRecipes()
+	{
+		Recipe recipe = base.CreateRecipe();
+		recipe.AddIngredient(175, 15);
+		recipe.AddIngredient(225, 3);
+		recipe.AddTile(16);
+		recipe.Register();
+	}
+}

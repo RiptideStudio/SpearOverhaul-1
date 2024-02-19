@@ -1,0 +1,48 @@
+Spear From the creators of Archery Overhaul and Sorcery Overhaul comes Spear Overhaul!
+
+This mod aims to overhaul the Spear class, and make it a viable, fun class to play! Along with new spears (of course) the core mechanics of how spears function have changed. 
+
+DISCLAIMER: This mod is a still a WIP but has perfectly polished and playable content up to the start of hardmode.
+
+This mod currently adds in the following items:
+
+. 16 New Spears
+. 8 New Accessories
+. 4 New Armor sets
+. 2 New Materials
+
+Unique Features:
+
+. Spear AI - Spear AI was one of the biggest problems in vanilla Terraria, but no longer! Spears now have a small amount of Aim-assist, which allows you to actually hit enemies and not constantly miss your attacks.
+. Right-click to throw your spear - All spears, including vanilla spears, can now be thrown by pressing right-click.
+. Bleeding - Thrown spears cause enemies to bleed, which causes projectiles to deal 20% more damage to said enemies.
+. Autoswing - Modded Spears (Not including most vanilla spears as of yet) now have autoswing, meaning you don't need to spam your mouse anymore.
+
+This mod is much smaller than my other overhaul mods, since I'm solo developing this project. 
+
+If you didn't know, I'm actually a game developer, and I make tons of art, music and more! If you want to share your work and have fun, 
+or want a list of the items in this mod, join my discord below! We try to update the mod every other week. If you want to apply as an artist for the team, join my Discord and send me a message!
+
+Discord: https://discord.gg/4ny8w74
+
+Patreon: https://www.patreon.com/RipStudios
+
+= Spear Overhaul Team =:
+
+Riptide: Artist, Programmer, Developer
+Mutater: Artist
+PootisTweet: Artist
+
+== CHANGELOG ==
+
+== v 1.2.7 - Final Fixes ==
+
+. Crystalized Armor set can be crafted using titanium or adamantite
+. Armor sell and buy values fixed
+
+
+
+
+
+
+

@@ -1,0 +1,34 @@
+using Terraria;
+using Terraria.ModLoader;
+
+namespace SpearOverhaul.Recipes;
+
+public class Leather : ModItem
+{
+	public override void SetStaticDefaults()
+	{
+		// base.DisplayName.SetDefault("Leather");
+		// base.Tooltip.SetDefault("Used to craft tribal gear");
+	}
+
+	public override void SetDefaults()
+	{
+		base.Item.width = 36;
+		base.Item.height = 52;
+		base.Item.maxStack = 999;
+		base.Item.value = 100;
+		base.Item.rare = 1;
+	}
+
+	public override void AddRecipes()
+	{
+		Recipe recipe = Recipe.Create(259);
+		recipe.AddIngredient(68);
+		recipe.AddTile(16);
+		recipe.Register();
+		Recipe recipe2 = Recipe.Create(259);
+		recipe2.AddIngredient(1330);
+		recipe2.AddTile(16);
+		recipe2.Register();
+	}
+}

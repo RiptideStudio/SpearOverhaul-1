@@ -1,0 +1,66 @@
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace SpearOverhaul.Projectiles;
+
+public class ExplosionLarge : ModProjectile
+{
+	private float force = 1f;
+
+	public override void SetStaticDefaults()
+	{
+		// base.DisplayName.SetDefault("Explosion");
+		ProjectileID.Sets.TrailCacheLength[base.Projectile.type] = 4;
+		ProjectileID.Sets.TrailingMode[base.Projectile.type] = 0;
+		Main.projFrames[base.Projectile.type] = 8;
+	}
+
+	public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+	{
+		target.AddBuff(24, 120);
+		target.AddBuff(base.Mod.Find<ModBuff>("DeepslateBuff").Type, 120);
+	}
+
+	public override void SetDefaults()
+	{
+		base.Projectile.width = 4;
+		base.Projectile.arrow = true;
+		base.Projectile.height = 4;
+		base.Projectile.aiStyle = 612;
+		base.Projectile.friendly = true;
+		base.Projectile.hostile = false;
+		base.Projectile.DamageType = DamageClass.Magic;
+		base.Projectile.penetrate = 3751057;
+		base.Projectile.light = 0f;
+		base.Projectile.ignoreWater = true;
+		base.Projectile.extraUpdates = 1;
+		base.Projectile.width = 64;
+		base.Projectile.height = 64;
+		base.Projectile.timeLeft = 75;
+		base.Projectile.tileCollide = false;
+	}
+
+	public override void AI()
+	{
+		base.Projectile.alpha += 4;
+		if (++base.Projectile.frameCounter >= 7)
+		{
+			base.Projectile.frameCounter = 0;
+			if (++base.Projectile.frame > 12)
+			{
+				base.Projectile.frame = 0;
+			}
+		}
+		base.Projectile.velocity.X = 0f;
+		base.Projectile.velocity.Y = 0f;
+		this.force -= 0.01f;
+		base.Projectile.position.Y -= this.force;
+	}
+
+	public override bool OnTileCollide(Vector2 oldVelocity)
+	{
+		return true;
+	}
+}

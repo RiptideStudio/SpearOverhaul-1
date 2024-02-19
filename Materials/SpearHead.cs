@@ -1,0 +1,32 @@
+using Terraria;
+using Terraria.ModLoader;
+
+namespace SpearOverhaul.Materials;
+
+public class SpearHead : ModItem
+{
+	public override void SetStaticDefaults()
+	{
+		// base.DisplayName.SetDefault("Spearhead");
+		// base.Tooltip.SetDefault("Youch! It's pointy!\nUsed to craft spears");
+	}
+
+	public override void SetDefaults()
+	{
+		base.Item.width = 16;
+		base.Item.height = 32;
+		base.Item.maxStack = 999;
+		base.Item.value = 100;
+		base.Item.rare = 1;
+		base.Item.noMelee = true;
+	}
+
+	public override void AddRecipes()
+	{
+		Recipe recipe = base.CreateRecipe();
+		recipe.AddRecipeGroup("Wood", 25);
+		recipe.AddIngredient(3, 5);
+		recipe.AddTile(106);
+		recipe.Register();
+	}
+}

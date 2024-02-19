@@ -1,0 +1,45 @@
+using System;
+using SpearOverhaul.GlobalStuff;
+using Terraria;
+using Terraria.ModLoader;
+
+namespace SpearOverhaul.Accessories;
+
+public class GodslayerGloves : ModItem
+{
+	public override void SetStaticDefaults()
+	{
+		base.DisplayName.SetDefault("Godslayer's Gloves");
+		base.Tooltip.SetDefault("'Forged by Kronos himself'\nMelee damage increased by 25%\nMassively increases spear size\nIncreases thrown spear velocity by 50%\nThrown spear penetration increased by 3");
+	}
+
+	public override void SetDefaults()
+	{
+		base.Item.width = 24;
+		base.Item.height = 28;
+		base.Item.value = 0;
+		base.Item.rare = 8;
+		base.Item.value = 100000;
+		base.Item.accessory = true;
+	}
+
+	public override void UpdateAccessory(Player player, bool showVisual)
+	{
+		player.GetModPlayer<GlobalPlayer>().spearSpeed += 0.5f;
+		player.GetModPlayer<GlobalPlayer>().godGlove = true;
+		player.GetDamage(DamageClass.Melee) += 0.25f;
+		player.ghostFrame = 4;
+		player.ghostFade = 2.3f;
+		player.GetModPlayer<GlobalPlayer>().spearDamage += (int)Math.Ceiling((double)((float)player.GetModPlayer<GlobalPlayer>().spearDamage * 0.25f));
+	}
+
+	public override void AddRecipes()
+	{
+		Recipe recipe = base.CreateRecipe();
+		recipe.AddIngredient(null, "HellknightGlove");
+		recipe.AddIngredient(3261, 10);
+		recipe.AddIngredient(3458, 5);
+		recipe.AddTile(412);
+		recipe.Register();
+	}
+}

@@ -1,0 +1,424 @@
+Buffs: {
+	BloodDebuff: {
+		DisplayName: Bleeding
+		Description: Enemy life regeneration reduced
+	}
+
+	BloodDebuff2: {
+		DisplayName: Bleeding
+		Description: Enemy life regeneration reduced
+	}
+
+	BloodDebuff3: {
+		DisplayName: Bleeding
+		Description: Enemy life regeneration reduced
+	}
+
+	GodArmorBuff: {
+		DisplayName: Titan's Blessing
+		Description:
+			'''
+			Defense increased by 30
+			Melee damage increased by 15%
+			'''
+	}
+
+	GodArmorDebuff: {
+		DisplayName: Titan's Blessing Cooldown
+		Description: Titan's Blessing is on cooldown
+	}
+}
+
+Items: {
+	CrystalEmblem: {
+		DisplayName: Crystal Emblem
+		Tooltip: 12% increased melee damage\n20% increased spear velocity\n8% increased melee critical strike chance\nLife regeneration greatly increased
+	}
+
+	GodslayerGloves: {
+		DisplayName: Godslayer Gloves
+		Tooltip:
+			'''
+			'Forged by Kronos himself'
+			Melee damage increased by 25%
+			Massively increases spear size
+			Increases thrown spear velocity by 50%
+			Thrown spear penetration increased by 3
+			'''
+	}
+
+	HellknightGlove: {
+		DisplayName: Hellknight Gauntlet
+		Tooltip:
+			'''
+			Melee damage increased by 15%
+			Greatly increases spear size
+			Increases thrown spear velocity
+			Thrown spear penetration increased by 2
+			Melee attacks light enemies ablaze
+			'''
+	}
+
+	SawmillBox: {
+		DisplayName: Box o' Saws
+		Tooltip:
+			'''
+			'Why are there holes in my pockets?'
+			Increased melee damage by 5%
+			10% increased thrown spear velocity
+			'''
+	}
+
+	SpearCrystal: {
+		DisplayName: Kyber Crystal
+		Tooltip:
+			'''
+			'Contains an incredible amount of latent energy'
+			Melee damage and spear velocity increased by 12%
+			Greatly increased health regeneration
+			'''
+	}
+
+	SpearEmblem: {
+		DisplayName: Spear Emblem
+		Tooltip: 15% increased spear velocity
+	}
+
+	TribalGlove: {
+		DisplayName: Tribal Glove
+		Tooltip:
+			'''
+			'Why's the inside warm?'
+			7% increased melee damage
+			12% increased thrown spear velocity
+			'''
+	}
+
+	WarriorGlove: {
+		DisplayName: Tribal Gauntlet
+		Tooltip:
+			'''
+			% increased melee damage
+			Slightly increases spear size
+			15% increased spear velocity
+			Thrown spear penetration increased by 1
+			'''
+	}
+
+	CrystalChestplate: {
+		DisplayName: Crystalized Cloak
+		Tooltip:
+			'''
+			10% increased spear velocity
+			5% increased melee damage and critical strike chance
+			'''
+	}
+
+	CrystalHelmet: {
+		DisplayName: Crystalized Hood
+		Tooltip:
+			'''
+			15% increased melee damage
+			5% increased critical strike chance
+			'''
+	}
+
+	CrystalLegs: {
+		DisplayName: Crystalized Pants
+		Tooltip:
+			'''
+			10% increased melee damage
+			20% increased movement speed
+			'''
+	}
+
+	GodslayerChestplate: {
+		DisplayName: Godslayer Chestplate
+		Tooltip:
+			'''
+			12% increased critical strike chance
+			8% increased damage
+			Max life increased by 20
+			'''
+	}
+
+	GodslayerHelmet: {
+		DisplayName: Godslayer Helmet
+		Tooltip:
+			'''
+			18% increased melee damage
+			12% increased melee critical strike chance
+			Max life increased by 20
+			'''
+	}
+
+	GodslayerPants: {
+		DisplayName: Godslayer Pants
+		Tooltip:
+			'''
+			12% increased melee damage
+			Greatly increased mobility
+			Max life increased by 20
+			'''
+	}
+
+	HellknightChestplate: {
+		DisplayName: Hellknight Chestplate
+		Tooltip:
+			'''
+			7% increased critical strike chance
+			5% increased damage
+			'''
+	}
+
+	HellknightHelmet: {
+		DisplayName: Hellknight Helmet
+		Tooltip:
+			'''
+			12% increased melee damage
+			5% increased melee critical strike chance
+			'''
+	}
+
+	HellknightLeggings: {
+		DisplayName: Hellknight Leggings
+		Tooltip:
+			'''
+			5% increased melee damage
+			12% increased movement speed
+			'''
+	}
+
+	TribalChestplate: {
+		DisplayName: Tribal Chestplate
+		Tooltip:
+			'''
+			5% increased critical strike chance
+			7% increased melee damage
+			'''
+	}
+
+	TribalHat: {
+		DisplayName: Tribal Hat
+		Tooltip:
+			'''
+			5% increased defense
+			5% increased melee damage
+			'''
+	}
+
+	TribalPants: {
+		DisplayName: Tribal Pants
+		Tooltip:
+			'''
+			3% increased melee damage
+			7% increased movement speed
+			'''
+	}
+
+	BramblePartisan: {
+		DisplayName: Bramble Partisan
+		Tooltip:
+			'''
+			Releases a stinger every third strike
+			Has a chance to poison enemies
+			'''
+	}
+
+	CactusSpike: {
+		DisplayName: Cactus Spike
+		Tooltip: Has a small chance to poison enemies
+	}
+
+	CrimsonSpear: {
+		DisplayName: Crimson Carnage
+		Tooltip: Casts a blast of blood energy each time the spear is thrusted
+	}
+
+	CrystalCrusher: {
+		DisplayName: Crystal Crusher
+		Tooltip: Releases crystal bolts on impact
+	}
+
+	DemonSpear: {
+		DisplayName: Demonslayer's Tollgate
+		Tooltip: Casts a demonic blast of energy each time the spear is thrusted
+	}
+
+	ElementalSpear: {
+		DisplayName: Elemental Thrasher
+		Tooltip:
+			'''
+			Jabs and throws incredibly fast
+			Casts a fireball every third thrust
+			Casts a beam of ice every fifth thrust
+			Inflicts frostburn and lights enemies ablaze
+			'''
+	}
+
+	FrozenSpear: {
+		DisplayName: Frozen Halberd
+		Tooltip: Has a chance to inflict frostburn on impact
+	}
+
+	GodslayerSpear: {
+		DisplayName: The Godslayer
+		Tooltip:
+			'''
+			'Contains the power of the gods'
+			Creates explosions of golden light on impact
+			Secondary spears are thrown forward from the central spear
+			Inflicts ichor
+			'''
+	}
+
+	HunterSpear: {
+		DisplayName: Hunter's Spear
+		Tooltip: ""
+	}
+
+	KingSpear: {
+		DisplayName: Midas' Spear
+		Tooltip:
+			'''
+			Releases a bolt of ichor
+			Thrown spears defy gravity, ricochet off walls and pierce more enemies
+			Has a chance to inflict ichor
+			Has an incredibly high critical-strike ratio
+			'''
+	}
+
+	MarbleSpear: {
+		DisplayName: Victory
+		Tooltip: Slams enemies with marble explosions on impact, dealing area damage
+	}
+
+	MoltenJabber: {
+		DisplayName: Hellknight Thruster
+		Tooltip: Has a chance to burn enemies
+	}
+
+	PaladinSpear: {
+		DisplayName: Paladin's Naginata
+		Tooltip:
+			'''
+			Right-click to throw a returning spear
+			Thrown spear goes through tiles
+			Heals on critical hits
+			Inflicts ichor
+			'''
+	}
+
+	ReinforcedPike: {
+		DisplayName: Reinforced Pike
+		Tooltip: ""
+	}
+
+	ShadowLance: {
+		DisplayName: Darkflame Lance
+		Tooltip:
+			'''
+			Destroys your opponent's soul
+			Leaves a trail of demon scythes
+			Thrown spear creates weaker demon scythes on enemy impact
+			'''
+	}
+
+	WoodenPike: {
+		DisplayName: Wooden Pike
+		Tooltip:
+			'''
+			Thrown spears cause enemies to bleed
+			Bleeding enemies take 20% more damage from projectiles, including spears
+			'''
+	}
+
+	CrystalSpearHead: {
+		DisplayName: Crystal Spearhead
+		Tooltip:
+			'''
+			Is imbued with magic, obviously
+			Used to craft powerful spears
+			'''
+	}
+
+	SpearHead: {
+		DisplayName: Spearhead
+		Tooltip:
+			'''
+			Youch! It's pointy!
+			Used to craft spears
+			'''
+	}
+
+	Spear: {
+		DisplayName: Spear
+		Tooltip: Pointy!
+	}
+
+	Leather: {
+		DisplayName: Leather
+		Tooltip: Used to craft tribal gear
+	}
+}
+
+Projectiles: {
+	CrimsonEnergyBall.DisplayName: Crimson Energy Ball
+	DemonEnergyBall.DisplayName: Demon Energy Ball
+	Explosion.DisplayName: Explosion
+	ExplosionBig.DisplayName: Explosion Big
+	ExplosionLarge.DisplayName: Explosion Large
+	GodShield.DisplayName: God Shield
+	LightExplosion.DisplayName: Light Explosion
+	MarbleRay.DisplayName: Marble Ray
+	SporeCloud.DisplayName: Spore Cloud
+	BramblePartisanSpear.DisplayName: Bramble Partisan
+	CactusSpikeSpear.DisplayName: Cactus Spike
+	CrimsonSpearSpear.DisplayName: Crimson Carnage
+	CrystalCrusherSpear.DisplayName: Crystal Crusher
+	DarkflameSpearSpear.DisplayName: Darkflame Lance
+	DemonSpearSpear.DisplayName: Demonslayer's Tollgate
+	ElementalSpearSpear.DisplayName: Elemental Thrasher
+	FrozenSpearSpear.DisplayName: Frozen Halberd
+	GodslayerSpearSpear.DisplayName: The Godslayer
+	HunterSpearSpear.DisplayName: Hunter's Spear
+	KingSpearSpear.DisplayName: Midas' Spear
+	MarbleSpearSpear.DisplayName: Voctory
+	MoltenJabberSpear.DisplayName: Hellknight Thruster
+	PaladinSpearSpear.DisplayName: Paladin's Naginata
+	ReinforcedPikeSpear.DisplayName: Reinforced Pike
+	SpearSpear.DisplayName: Spear
+	ThrownSpear.DisplayName: Spear
+	WoodenPikeSpear.DisplayName: Wooden Pike
+	AdamantiteSpearThrown.DisplayName: Adamantite Glaive
+	BramblePartisanThrown.DisplayName: Bramble Partisan
+	CactusSpearThrown.DisplayName: Cactus Spike
+	ChlorophyteSpearThrown.DisplayName: Chlorophyte Partisan
+	CobaltSpearThrown.DisplayName: Cobalt Naginata
+	CrimsonSpearThrown.DisplayName: Crimson Carnage
+	CrystalSpearThrown.DisplayName: Crystal Crusher
+	DarkflameSpearThrown.DisplayName: Darkflame Lance
+	DarkLanceSpearThrown.DisplayName: Dark Lance
+	DemonSpearThrown.DisplayName: Demonslayer's Tollgate
+	ElementalSpearThrown.DisplayName: Elemental Thrasher
+	FrozenSpearThrown.DisplayName: Frozen Halberd
+	GodslayerSpearThrown.DisplayName: The Godslayer
+	GungnirSpearThrown.DisplayName: Gungnir
+	HunterSpearThrown.DisplayName: Hunter's Spear
+	KingSpearThrown.DisplayName: Midas' Spear
+	MarbleSpearThrown.DisplayName: Victory
+	MoltenSpearThrown.DisplayName: Hellknight Thruster
+	MushroomSpearThrown.DisplayName: Mushroom Spear
+	MythrilSpearThrown.DisplayName: Mythril Halberd
+	NorthPoleSpearThrown.DisplayName: North Pole
+	ObsidianSpearThrown.DisplayName: Obsidian Swordfish
+	OrichalcumSpearThrown.DisplayName: Orichalcum Halberd
+	PaladinSpearThrown.DisplayName: Paladin's Naginata
+	PalladiumSpearThrown.DisplayName: Palladium Pike
+	ReinforcedSpearThrown.DisplayName: Reinforced Pike
+	RottedSpearThrown.DisplayName: The Rotted Fork
+	SpearThrown.DisplayName: Spear
+	TitaniumSpearThrown.DisplayName: Titanium Trident
+	TridentSpearThrown.DisplayName: Trident
+	WoodenSpearThrown.DisplayName: Wooden Pike
+}

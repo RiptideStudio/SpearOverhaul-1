@@ -1,0 +1,32 @@
+using Terraria;
+using Terraria.ModLoader;
+
+namespace SpearOverhaul.Materials;
+
+public class CrystalSpearHead : ModItem
+{
+	public override void SetStaticDefaults()
+	{
+		// base.DisplayName.SetDefault("Crystal Spearhead");
+		// base.Tooltip.SetDefault("Is imbued with magic, obviously\nUsed to craft powerful spears");
+	}
+
+	public override void SetDefaults()
+	{
+		base.Item.width = 16;
+		base.Item.height = 32;
+		base.Item.maxStack = 999;
+		base.Item.value = 1000;
+		base.Item.rare = 6;
+		base.Item.noMelee = true;
+	}
+
+	public override void AddRecipes()
+	{
+		Recipe recipe = base.CreateRecipe();
+		recipe.AddIngredient(502);
+		recipe.AddIngredient(null, "SpearHead");
+		recipe.AddTile(134);
+		recipe.Register();
+	}
+}

@@ -1,0 +1,48 @@
+using SpearOverhaul.GlobalStuff;
+using System;
+using Terraria;
+using Terraria.ModLoader;
+
+namespace SpearOverhaul.Armor;
+
+[AutoloadEquip(new EquipType[] { EquipType.Legs })]
+public class CrystalLegs : ModItem
+{
+    public override void SetStaticDefaults()
+    {
+        // base.DisplayName.SetDefault("Crystalized Pants");
+        // base.Tooltip.SetDefault("10% increased melee damage\n20% increased movement speed");
+    }
+
+    public override void SetDefaults()
+    {
+        base.Item.width = 18;
+        base.Item.height = 18;
+        base.Item.value = 52500;
+        base.Item.rare = 6;
+        base.Item.defense = 15;
+    }
+
+    public override void UpdateEquip(Player player)
+    {
+        player.moveSpeed += 0.2f;
+        player.GetDamage(DamageClass.Melee) += 0.1f;
+        player.GetModPlayer<GlobalPlayer>().spearDamage += (int)Math.Ceiling((double)((float)player.GetModPlayer<GlobalPlayer>().spearDamage * 0.07f));
+    }
+
+    public override void AddRecipes()
+    {
+        Recipe recipe = base.CreateRecipe();
+        recipe.AddIngredient(391, 9);
+        recipe.AddIngredient(502, 7);
+        recipe.AddIngredient(520, 4);
+        recipe.AddTile(134);
+        recipe.Register();
+        Recipe recipe2 = base.CreateRecipe();
+        recipe2.AddIngredient(1198, 9);
+        recipe2.AddIngredient(502, 7);
+        recipe2.AddIngredient(520, 4);
+        recipe2.AddTile(134);
+        recipe2.Register();
+    }
+}

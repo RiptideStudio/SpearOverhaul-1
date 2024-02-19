@@ -1,0 +1,31 @@
+using Terraria;
+using Terraria.ModLoader;
+
+namespace SpearOverhaul.Recipes;
+
+public class Spear : ModItem
+{
+	public override void SetStaticDefaults()
+	{
+		// base.DisplayName.SetDefault("Spear");
+		// base.Tooltip.SetDefault("Pointy!");
+	}
+
+	public override void SetDefaults()
+	{
+		base.Item.width = 36;
+		base.Item.height = 52;
+		base.Item.maxStack = 999;
+		base.Item.value = 100;
+		base.Item.rare = 1;
+	}
+
+	public override void AddRecipes()
+	{
+		Recipe recipe = Recipe.Create(280);
+		recipe.AddIngredient(null, "SpearHead");
+		recipe.AddRecipeGroup("IronBar", 5);
+		recipe.AddTile(16);
+		recipe.Register();
+	}
+}

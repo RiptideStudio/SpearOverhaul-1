@@ -1,0 +1,119 @@
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.Audio;
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace SpearOverhaul.SpearProjectiles;
+
+public class GodslayerSpearSpear : ModProjectile
+{
+	private bool jab;
+
+	private int timer;
+
+	private bool moveBack;
+
+	public float movementFactor
+	{
+		get
+		{
+			return base.Projectile.ai[0];
+		}
+		set
+		{
+			base.Projectile.ai[0] = value;
+		}
+	}
+
+	public override void SetStaticDefaults()
+	{
+		// base.DisplayName.SetDefault("God's Spear");
+		ProjectileID.Sets.TrailCacheLength[base.Projectile.type] = 5;
+		ProjectileID.Sets.TrailingMode[base.Projectile.type] = 0;
+	}
+
+	public override void SetDefaults()
+	{
+		base.Projectile.width = 85;
+		base.Projectile.height = 85;
+		base.Projectile.aiStyle = 19;
+		base.Projectile.penetrate = -1;
+		base.Projectile.scale = 1.25f;
+		base.Projectile.alpha = 0;
+		base.Projectile.hide = true;
+		base.Projectile.ownerHitCheck = true;
+		base.Projectile.DamageType = DamageClass.Melee;
+		base.Projectile.tileCollide = false;
+		base.Projectile.friendly = true;
+		base.Projectile.timeLeft = 60;
+	}
+
+	public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+	{
+		//IL_00e7: Unknown result type (might be due to invalid IL or missing references)
+		Projectile.NewProjectile(target.GetSource_Death(), target.Center.X - 35f, target.Center.Y - 35f, 0f, 0f, base.Mod.Find<ModProjectile>("LightExplosion").Type, 0, knockback, Main.LocalPlayer.whoAmI);
+		Projectile.NewProjectile(target.GetSource_Death(), target.Center.X, target.Center.Y, base.Projectile.velocity.X, base.Projectile.velocity.Y, base.Mod.Find<ModProjectile>("Explosion").Type, damage, knockback, Main.LocalPlayer.whoAmI);
+		SoundEngine.PlaySound(in SoundID.Item89, base.Projectile.position);
+		for (int i = 0; i < 12; i++)
+		{
+			Dust dust = Dust.NewDustDirect(base.Projectile.position, base.Projectile.height * 2, base.Projectile.width * 2, 228, base.Projectile.velocity.X * 0.2f, base.Projectile.velocity.Y * 0.2f, 200, default(Color), 1.5f);
+			dust.velocity = base.Projectile.velocity * 2f;
+			dust.velocity *= 0.5f;
+		}
+		if (Main.rand.Next(0, 3) == 1)
+		{
+			target.AddBuff(69, 300);
+		}
+	}
+
+	public override void AI()
+	{
+		if (this.jab)
+		{
+			this.timer++;
+		}
+		Dust dust = Dust.NewDustDirect(base.Projectile.position - new Vector2(base.Projectile.velocity.X * 5f, base.Projectile.velocity.Y * 5f), base.Projectile.height, base.Projectile.width, 57, base.Projectile.velocity.X * 0.2f, base.Projectile.velocity.Y * 0.2f, 200, default(Color), 1.2f);
+		dust.velocity += base.Projectile.velocity;
+		dust.noGravity = true;
+		Dust dust2 = Dust.NewDustDirect(base.Projectile.position - new Vector2(base.Projectile.velocity.X * 5f, base.Projectile.velocity.Y * 5f), base.Projectile.height, base.Projectile.width, 228, base.Projectile.velocity.X * 0.2f, base.Projectile.velocity.Y * 0.2f, 200, default(Color), 1.6f);
+		dust2.velocity += base.Projectile.velocity;
+		dust2.noGravity = true;
+		Dust dust3 = Dust.NewDustDirect(base.Projectile.position - new Vector2(base.Projectile.velocity.X * 5f, base.Projectile.velocity.Y * 5f), base.Projectile.height, base.Projectile.width, 175, base.Projectile.velocity.X * 0.2f, base.Projectile.velocity.Y * 0.2f, 200, default(Color), 1.2f);
+		dust3.velocity += base.Projectile.velocity;
+		dust3.noGravity = true;
+		Player projOwner = Main.player[base.Projectile.owner];
+		Vector2 ownerMountedCenter = projOwner.RotatedRelativePoint(projOwner.MountedCenter, reverseRotation: true);
+		base.Projectile.direction = projOwner.direction;
+		projOwner.heldProj = base.Projectile.whoAmI;
+		projOwner.itemTime = projOwner.itemAnimation;
+		base.Projectile.position.X = ownerMountedCenter.X - ((float)(base.Projectile.width / 2) + base.Projectile.velocity.X * 3f);
+		base.Projectile.position.Y = ownerMountedCenter.Y - ((float)(base.Projectile.height / 2) + base.Projectile.velocity.Y * 3f);
+		if (!projOwner.frozen)
+		{
+			if (this.movementFactor == 0f)
+			{
+				this.movementFactor = 1f;
+				base.Projectile.netUpdate = true;
+			}
+			if (projOwner.itemAnimation < projOwner.itemAnimationMax / 3)
+			{
+				this.movementFactor -= 3.75f;
+			}
+			else
+			{
+				this.movementFactor += 3.75f;
+			}
+		}
+		base.Projectile.position += base.Projectile.velocity * this.movementFactor;
+		if (projOwner.itemAnimation == 0)
+		{
+			base.Projectile.Kill();
+		}
+		base.Projectile.rotation = base.Projectile.velocity.ToRotation() + MathHelper.ToRadians(135f);
+		if (base.Projectile.spriteDirection == -1)
+		{
+			base.Projectile.rotation -= MathHelper.ToRadians(90f);
+		}
+	}
+}

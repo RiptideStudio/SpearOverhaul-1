@@ -1,0 +1,64 @@
+using SpearOverhaul.GlobalStuff;
+using System;
+using Terraria;
+using Terraria.ModLoader;
+
+namespace SpearOverhaul.Armor;
+
+[AutoloadEquip(new EquipType[] { EquipType.Head })]
+public class GodslayerHelmet : ModItem
+{
+    public override void SetStaticDefaults()
+    {
+        // base.DisplayName.SetDefault("Godslayer's Cowl");
+        // base.Tooltip.SetDefault("18% increased melee damage\n12% increased melee critical strike chance\nMax life increased by 20");
+    }
+
+    public override void SetDefaults()
+    {
+        base.Item.width = 18;
+        base.Item.height = 18;
+        base.Item.value = 50000;
+        base.Item.rare = 8;
+        base.Item.defense = 23;
+    }
+
+    public override void UpdateArmorSet(Player player)
+    {
+        player.setBonus = "When hit, you receive the Titan's Blessing\nThe Titan's Blessing grants the player 15% increased melee damage and 30 defense\nLife regeneration increased tenfold\nIncreased invincibility time after being hit";
+        player.GetModPlayer<GlobalPlayer>().godArmor = true;
+        player.lifeRegen += 5;
+        player.longInvince = true;
+    }
+
+    public override void ArmorSetShadows(Player player)
+    {
+        player.armorEffectDrawShadow = true;
+    }
+
+    public override void UpdateEquip(Player player)
+    {
+        player.GetModPlayer<GlobalPlayer>().spearDamage += (int)Math.Ceiling((double)((float)player.GetModPlayer<GlobalPlayer>().spearDamage * 0.18f));
+        player.statLifeMax2 += 20;
+        player.GetDamage(DamageClass.Melee) += 0.18f;
+        player.GetCritChance(DamageClass.Melee) += 12f;
+    }
+
+    public override bool IsArmorSet(Item head, Item body, Item legs)
+    {
+        if (body.type == base.Mod.Find<ModItem>("GodslayerChestplate").Type)
+        {
+            return legs.type == base.Mod.Find<ModItem>("GodslayerPants").Type;
+        }
+        return false;
+    }
+
+    public override void AddRecipes()
+    {
+        Recipe recipe = base.CreateRecipe();
+        recipe.AddIngredient(null, "CrystalHelmet");
+        recipe.AddIngredient(3261, 10);
+        recipe.AddTile(412);
+        recipe.Register();
+    }
+}

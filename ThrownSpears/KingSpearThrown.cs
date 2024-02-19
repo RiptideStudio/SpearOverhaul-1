@@ -1,0 +1,119 @@
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.Audio;
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace SpearOverhaul.ThrownSpears;
+
+public class KingSpearThrown : ModProjectile
+{
+	private int time;
+
+	private int bounce;
+
+	private int maxBounces = 6;
+
+	private bool bouncing;
+
+	protected override bool CloneNewInstances => false;
+
+	public override void SetStaticDefaults()
+	{
+		// base.DisplayName.SetDefault("King Spear");
+	}
+
+	public override void SetDefaults()
+	{
+		base.Projectile.aiStyle = 1;
+		base.Projectile.timeLeft = 500;
+		base.Projectile.friendly = true;
+		base.Projectile.hostile = false;
+		base.Projectile.width = 16;
+		base.Projectile.DamageType = DamageClass.Melee;
+		base.Projectile.height = 16;
+		base.Projectile.penetrate = 10;
+		base.Projectile.ignoreWater = false;
+		base.Projectile.tileCollide = true;
+		base.Projectile.scale = 1.25f;
+		base.Projectile.light = 0f;
+		base.Projectile.DamageType = DamageClass.Melee;
+		base.Projectile.extraUpdates = 1;
+		base.DrawOriginOffsetY = -20;
+		base.DrawOffsetX = -16;
+	}
+
+	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+	{
+		_ = Main.player[Main.myPlayer];
+		target.HasBuff(base.Mod.Find<ModBuff>("BloodDebuff").Type);
+		if (target.HasBuff(base.Mod.Find<ModBuff>("BloodDebuff2").Type))
+		{
+			target.AddBuff(base.Mod.Find<ModBuff>("BloodDebuff3").Type, 180);
+			target.AddBuff(base.Mod.Find<ModBuff>("BloodDebuff").Type, 240);
+		}
+		else if (target.HasBuff(base.Mod.Find<ModBuff>("BloodDebuff").Type))
+		{
+			target.AddBuff(base.Mod.Find<ModBuff>("BloodDebuff2").Type, 180);
+			target.AddBuff(base.Mod.Find<ModBuff>("BloodDebuff").Type, 240);
+		}
+		target.AddBuff(base.Mod.Find<ModBuff>("BloodDebuff").Type, 240);
+	}
+
+	public override bool OnTileCollide(Vector2 oldVelocity)
+	{
+		//IL_0047: Unknown result type (might be due to invalid IL or missing references)
+		this.bouncing = true;
+		this.bounce++;
+		SoundStyle style = SoundID.Dig.WithVolumeScale(0.5f).WithPitchOffset(0.8f);
+		SoundEngine.PlaySound(in style, base.Projectile.position);
+		for (int i = 0; i < 4; i++)
+		{
+			Dust.NewDust(base.Projectile.position, base.Projectile.width, base.Projectile.height, 7);
+		}
+		if (base.Projectile.velocity.X != oldVelocity.X)
+		{
+			base.Projectile.velocity.X = 0f - oldVelocity.X;
+		}
+		if (base.Projectile.velocity.Y != oldVelocity.Y)
+		{
+			base.Projectile.velocity.Y = 0f - oldVelocity.Y;
+		}
+		base.Projectile.aiStyle = 1;
+		if (this.bounce >= this.maxBounces)
+		{
+			return true;
+		}
+		return false;
+	}
+
+	public override void AI()
+	{
+		_ = Main.player[Main.myPlayer];
+		if (Main.rand.Next(0, 2) == 1)
+		{
+			Dust dust = Dust.NewDustDirect(base.Projectile.position, base.Projectile.height, base.Projectile.width, 228, base.Projectile.velocity.X * 0.2f, base.Projectile.velocity.Y * 0.2f, 0, default(Color), 1.2f);
+			dust.velocity = base.Projectile.velocity / 2f;
+			dust.noGravity = true;
+		}
+		base.Projectile.rotation = base.Projectile.velocity.ToRotation() + MathHelper.ToRadians(45f);
+		if (base.Projectile.spriteDirection == -1)
+		{
+			base.Projectile.rotation -= MathHelper.ToRadians(90f);
+		}
+		base.Projectile.aiStyle = 0;
+	}
+
+	public override void OnKill(int timeLeft)
+	{
+		//IL_0021: Unknown result type (might be due to invalid IL or missing references)
+		_ = Main.player[Main.myPlayer];
+		SoundEngine.PlaySound(in SoundID.Dig, base.Projectile.position);
+		for (int i = 0; i < 8; i++)
+		{
+			int num370 = Dust.NewDust(new Vector2(base.Projectile.position.X, base.Projectile.position.Y), base.Projectile.width, base.Projectile.height, 0, 0f, 0f, 7, default(Color), 1.5f);
+			Main.dust[num370].velocity *= 1.4f;
+			Main.dust[num370].noGravity = true;
+		}
+	}
+}

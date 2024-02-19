@@ -1,0 +1,67 @@
+using SpearOverhaul.GlobalStuff;
+using Terraria;
+using Terraria.ModLoader;
+
+namespace SpearOverhaul.Armor;
+
+[AutoloadEquip(new EquipType[] { EquipType.Head })]
+public class CrystalHelmet : ModItem
+{
+	public override void SetStaticDefaults()
+	{
+		base.DisplayName.SetDefault("Crystalized Hood");
+		base.Tooltip.SetDefault("15% increased melee damage\n5% increased critical strike chance");
+	}
+
+	public override void SetDefaults()
+	{
+		base.Item.width = 18;
+		base.Item.height = 18;
+		base.Item.value = 100000;
+		base.Item.rare = 6;
+		base.Item.defense = 14;
+	}
+
+	public override void UpdateArmorSet(Player player)
+	{
+		player.setBonus = "Grants the player increased invinciblity length\nEvery fifth thrust or throw of your spear casts a crystal strike";
+		player.GetModPlayer<GlobalPlayer>().crystalArmor = true;
+		player.longInvince = true;
+	}
+
+	public override void ArmorSetShadows(Player player)
+	{
+		player.armorEffectDrawShadow = true;
+	}
+
+	public override void UpdateEquip(Player player)
+	{
+		player.GetDamage(DamageClass.Melee) += 0.15f;
+		player.GetCritChance(DamageClass.Generic) += 5f;
+	}
+
+	public override bool IsArmorSet(Item head, Item body, Item legs)
+	{
+		if (body.type == base.Mod.Find<ModItem>("CrystalChestplate").Type)
+		{
+			return legs.type == base.Mod.Find<ModItem>("CrystalLegs").Type;
+		}
+		return false;
+	}
+
+	public override void AddRecipes()
+	{
+		Recipe recipe = base.CreateRecipe();
+		recipe.AddIngredient(391, 7);
+		recipe.AddIngredient(502, 5);
+		recipe.AddIngredient(520, 3);
+		recipe.AddTile(134);
+		recipe.Register();
+		Recipe recipe2 = base.CreateRecipe();
+		recipe2.AddIngredient(1198, 7);
+		recipe2.AddIngredient(502, 5);
+		recipe2.AddIngredient(520, 3);
+		recipe2.AddTile(134);
+		recipe2.Register();
+	}
+}

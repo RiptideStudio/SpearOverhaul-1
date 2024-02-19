@@ -1,0 +1,40 @@
+using Terraria;
+using Terraria.ModLoader;
+
+namespace SpearOverhaul.Armor;
+
+[AutoloadEquip(new EquipType[] { EquipType.Body })]
+public class TribalChestplate : ModItem
+{
+	public override void SetStaticDefaults()
+	{
+		// base.DisplayName.SetDefault("Tribal Chestplate");
+		// base.Tooltip.SetDefault("5% increased critical strike chance\n7% increased melee damage");
+	}
+
+	public override void SetDefaults()
+	{
+		base.Item.width = 18;
+		base.Item.height = 18;
+		base.Item.value = 3000;
+		base.Item.rare = 2;
+		base.Item.defense = 5;
+	}
+
+	public override void UpdateEquip(Player player)
+	{
+		player.GetDamage(DamageClass.Melee) += 0.07f;
+		player.GetCritChance(DamageClass.Generic) += 5f;
+	}
+
+	public override void AddRecipes()
+	{
+		Recipe recipe = base.CreateRecipe();
+		recipe.AddIngredient(259, 5);
+		recipe.AddIngredient(734);
+		recipe.AddIngredient(209, 3);
+		recipe.AddIngredient(210);
+		recipe.AddTile(16);
+		recipe.Register();
+	}
+}

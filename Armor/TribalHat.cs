@@ -1,0 +1,58 @@
+using System;
+using SpearOverhaul.GlobalStuff;
+using Terraria;
+using Terraria.ModLoader;
+
+namespace SpearOverhaul.Armor;
+
+[AutoloadEquip(new EquipType[] { EquipType.Head })]
+public class TribalHat : ModItem
+{
+	public override void SetStaticDefaults()
+	{
+		// base.DisplayName.SetDefault("Tribal Hat");
+		// base.Tooltip.SetDefault("5% increased defense\n5% increased melee damage");
+	}
+
+	public override void SetDefaults()
+	{
+		base.Item.width = 18;
+		base.Item.height = 18;
+		base.Item.value = 2000;
+		base.Item.rare = 2;
+		base.Item.defense = 4;
+	}
+
+	public override void UpdateArmorSet(Player player)
+	{
+		player.setBonus = "Spear knockback increased\nMelee projectiles leave a trail of poisonous gas\nPoisonous gas deals a third of your spear damage";
+		player.GetModPlayer<GlobalPlayer>().tribalArmor = true;
+		player.GetModPlayer<GlobalPlayer>().spearPenetrate++;
+		player.statDefense += player.statDefense / 20;
+	}
+
+	public override void UpdateEquip(Player player)
+	{
+		player.GetDamage(DamageClass.Melee) += 0.05f;
+		player.GetModPlayer<GlobalPlayer>().spearDamage += (int)Math.Ceiling((double)((float)player.GetModPlayer<GlobalPlayer>().spearDamage * 0.05f));
+	}
+
+	public override bool IsArmorSet(Item head, Item body, Item legs)
+	{
+		if (body.type == base.Mod.Find<ModItem>("TribalChestplate").Type)
+		{
+			return legs.type == base.Mod.Find<ModItem>("TribalPants").Type;
+		}
+		return false;
+	}
+
+	public override void AddRecipes()
+	{
+		Recipe recipe = base.CreateRecipe();
+		recipe.AddIngredient(259, 2);
+		recipe.AddIngredient(733);
+		recipe.AddIngredient(210);
+		recipe.AddTile(16);
+		recipe.Register();
+	}
+}

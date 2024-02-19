@@ -1,0 +1,56 @@
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace SpearOverhaul.Items;
+
+public class HunterSpear : ModItem
+{
+	public override void SetStaticDefaults()
+	{
+		base.DisplayName.SetDefault("Hunter's Spear");
+		base.Tooltip.SetDefault("");
+	}
+
+	public override void SetDefaults()
+	{
+		base.Item.CloneDefaults(280);
+		base.Item.noGrabDelay = 101;
+		base.Item.damage = 21;
+		base.Item.DamageType = DamageClass.Melee;
+		base.Item.width = 40;
+		base.Item.height = 40;
+		base.Item.useTime = 31;
+		base.Item.useAnimation = 31;
+		base.Item.knockBack = 7f;
+		base.Item.value = 10000;
+		base.Item.rare = 3;
+		base.Item.shoot = base.Mod.Find<ModProjectile>("HunterSpearSpear").Type;
+		base.Item.UseSound = SoundID.Item1;
+		base.Item.autoReuse = true;
+		base.Item.shootSpeed = 5f;
+	}
+
+	public override bool CanUseItem(Player player)
+	{
+		return player.ownedProjectileCounts[base.Mod.Find<ModProjectile>("HunterSpearSpear").Type] < 1;
+	}
+
+	public override void AddRecipes()
+	{
+		Recipe recipe = base.CreateRecipe();
+		recipe.AddIngredient(null, "SpearHead");
+		recipe.AddIngredient(null, "ReinforcedPike");
+		recipe.AddRecipeGroup("Wood", 25);
+		recipe.AddIngredient(57, 5);
+		recipe.AddTile(16);
+		recipe.Register();
+		Recipe recipe2 = base.CreateRecipe();
+		recipe2.AddIngredient(null, "SpearHead");
+		recipe2.AddIngredient(null, "ReinforcedPike");
+		recipe2.AddRecipeGroup("Wood", 25);
+		recipe2.AddIngredient(1257, 5);
+		recipe2.AddTile(16);
+		recipe2.Register();
+	}
+}
