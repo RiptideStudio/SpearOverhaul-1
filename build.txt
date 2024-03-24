@@ -1,4 +1,4 @@
 displayName = Spear Overhaul
 author = Riptide
-version = 1.4
+version = 1.4.2
 homepage = https://discord.gg/XbzKuFg

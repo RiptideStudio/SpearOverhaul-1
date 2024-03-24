@@ -4,10 +4,19 @@
 //using Terraria.ID;
 //using Terraria.ModLoader;
 
+using Terraria;
+
 namespace SpearOverhaul.SpearProjectiles;
 public class CactusSpikeSpear : SpearBase
 {
     protected override float HoldoutRangeMax => base.HoldoutRangeMax;
+    public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+    {
+        if (Main.rand.Next(0, 5) == 1)
+        {
+            target.AddBuff(20, 180);
+        }
+    }
 }
 //public class CactusSpikeSpear : ModProjectile
 //{

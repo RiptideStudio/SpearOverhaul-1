@@ -1,8 +1,10 @@
 Spear From the creators of Archery Overhaul and Sorcery Overhaul comes Spear Overhaul!
 
+Massive thanks to Rockman Zeta for porting Spear Overhaul to 1.4.4!
+
 This mod aims to overhaul the Spear class, and make it a viable, fun class to play! Along with new spears (of course) the core mechanics of how spears function have changed. 
 
-DISCLAIMER: This mod is a still a WIP but has perfectly polished and playable content up to the start of hardmode.
+DISCLAIMER: This mod is recently ported, so report any bugs over in the Discord server!
 
 This mod currently adds in the following items:
 

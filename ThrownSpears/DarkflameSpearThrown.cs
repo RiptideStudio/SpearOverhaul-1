@@ -82,7 +82,9 @@ public class DarkflameSpearThrown : ModProjectile
 
 	public override void OnKill(int timeLeft)
 	{
-		//IL_0021: Unknown result type (might be due to invalid IL or missing references)
+		int proj = Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, 45, Projectile.damage, 0f, Projectile.whoAmI);
+		Main.projectile[proj].timeLeft = 90;
+		Main.projectile[proj].scale = 0.75f;
 		_ = Main.player[Main.myPlayer];
 		SoundEngine.PlaySound(in SoundID.Dig, base.Projectile.position);
 		for (int i = 0; i < 8; i++)

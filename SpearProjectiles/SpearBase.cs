@@ -11,7 +11,9 @@ namespace SpearOverhaul.SpearProjectiles
         // Define the range of the Spear Projectile. These are overridable properties, in case you'll want to make a class inheriting from this one.
         protected virtual float HoldoutRangeMin => 24f;
         protected virtual float HoldoutRangeMax => 96f;
-
+        protected bool HasReachedHalfway = false; // whether our spear is retracting or not
+        protected virtual bool CanShootProjectile { get; set; } = false; // whether or not this spear can shoot a projectile
+        protected virtual string projectile => ""; // the projectile the spear shoots, set as a string name for now
         public override void SetDefaults()
         {
             Projectile.CloneDefaults(ProjectileID.Spear); // Clone the default values for a vanilla spear. Spear specific values set for width, height, aiStyle, friendly, penetrate, tileCollide, scale, hide, ownerHitCheck, and melee.
@@ -43,6 +45,16 @@ namespace SpearOverhaul.SpearProjectiles
             else
             {
                 progress = (duration - Projectile.timeLeft) / halfDuration;
+            }
+
+            if (player.itemAnimation < player.itemAnimationMax / 3)
+            {
+                // Some spears have a projectile they shoot when retracting
+                if (CanShootProjectile && !HasReachedHalfway)
+                {
+                    Projectile.NewProjectile(base.Projectile.GetSource_Death(), base.Projectile.Center.X + base.Projectile.velocity.X * -4f, base.Projectile.Center.Y + base.Projectile.velocity.Y * -4f, base.Projectile.velocity.X * 2, base.Projectile.velocity.Y * 2, base.Mod.Find<ModProjectile>(projectile).Type, base.Projectile.damage, base.Projectile.knockBack / 2f, player.whoAmI);
+                    HasReachedHalfway = true;
+                }
             }
 
             GlobalProj.SpearHoming(Projectile, 1f);

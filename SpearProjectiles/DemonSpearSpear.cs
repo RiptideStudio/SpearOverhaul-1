@@ -11,7 +11,8 @@ namespace SpearOverhaul.SpearProjectiles;
 public class DemonSpearSpear : SpearBase
 {
     protected override float HoldoutRangeMax => 140;
-
+    protected override string projectile => "DemonEnergyBall";
+    protected override bool CanShootProjectile { get; set; } = true;
     public override bool PreAI()
     {
         if (Main.rand.NextBool(2))

@@ -1,13 +1,11 @@
-//using Microsoft.Xna.Framework;
-//using SpearOverhaul.GlobalStuff;
-//using Terraria;
-//using Terraria.ID;
-//using Terraria.ModLoader;
+using Terraria;
 
 namespace SpearOverhaul.SpearProjectiles;
 public class CrimsonSpearSpear : SpearBase
 {
     protected override float HoldoutRangeMax => 120;
+    protected override string projectile => "CrimsonEnergyBall";
+    protected override bool CanShootProjectile { get; set; } = true;
 }
 //public class CrimsonSpearSpear : ModProjectile
 //{

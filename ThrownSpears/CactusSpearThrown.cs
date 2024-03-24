@@ -39,6 +39,10 @@ public class CactusSpearThrown : ModProjectile
 
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
+		if (Main.rand.Next(0, 5) == 1)
+		{
+			target.AddBuff(20, 180);
+		}
 		_ = Main.player[Main.myPlayer];
 		target.HasBuff(base.Mod.Find<ModBuff>("BloodDebuff").Type);
 		if (target.HasBuff(base.Mod.Find<ModBuff>("BloodDebuff2").Type))

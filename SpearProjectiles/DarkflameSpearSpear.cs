@@ -11,6 +11,7 @@ namespace SpearOverhaul.SpearProjectiles;
 public class DarkflameSpearSpear : SpearBase
 {
     protected override float HoldoutRangeMax => 170;
+    private int timer = 0;
 
     public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
     {
@@ -23,12 +24,21 @@ public class DarkflameSpearSpear : SpearBase
 
     public override bool PreAI()
     {
+        timer++;
         Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.height, Projectile.width, 65, Projectile.velocity.X * 0.2f, Projectile.velocity.Y * 1f, 0, default(Color), 1.2f);
         dust.velocity += Projectile.velocity;
         dust.noGravity = true;
         dust.scale = Main.rand.Next(150, 216) * 0.013f;
         Dust dust2 = Dust.NewDustDirect(Projectile.position, Projectile.height, Projectile.width, 65, Projectile.velocity.X * 0.2f, Projectile.velocity.Y * 1f, 0, default(Color), 1.2f);
         dust2.velocity += Projectile.velocity;
+
+        if (timer % 6 == 0)
+        {
+            int proj = Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center.X + Projectile.velocity.X * timer, Projectile.Center.Y + Projectile.velocity.Y * timer, 0f, 0f, 45, Projectile.damage, 0f, Projectile.whoAmI);
+            Main.projectile[proj].timeLeft = 90;
+            Main.projectile[proj].scale = 0.75f;
+        }
+
         return base.PreAI();
     }
 }
